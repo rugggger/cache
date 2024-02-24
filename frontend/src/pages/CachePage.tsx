@@ -10,19 +10,26 @@ import { Item } from "./gridUtils";
 import KeysTable from "../components/KeysTable";
 
 const CachePage = () => {
-  const [selectedKey, setSelectedKey] = React.useState<string>("")
+  const [selectedKey, setSelectedKey] = React.useState<string>("");
   return (
     <Page title="Cache">
       <Grid container spacing={2} sx={{ flexGrow: 1 }}>
         <Grid xs={12}>
           <Item>
-            <KeysTable onKeyClick={(key:string)=>{setSelectedKey(key)}} />
+            <KeysTable
+              onKeyClick={(key: string) => {
+                setSelectedKey(key);
+              }}
+            />
           </Item>
           <Item>
             <JSONObject
               showItemKey={selectedKey}
               onButton={(key: string, o: Object) => {
-                PutCache(key, o).then((res) => console.log(res));
+                PutCache(key, o)
+                  .catch((e) => {
+                    alert(`put failed : ${e}`);
+                  });
               }}
             />
           </Item>

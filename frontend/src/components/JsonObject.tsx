@@ -50,13 +50,16 @@ const JSONObject = (props: Props) => {
     <Grid xs={12}>
       <Item>
         <Input
+          
           value={key}
           onChange={(e) => setKey(e.target.value)}
           fullWidth={true}
           placeholder="Cache key"
         />
 
-        <Textarea minRows={10} value={textareaVal} onChange={handleChange} size="lg" />
+        <Textarea 
+        placeholder="Enter JSON..."
+        minRows={10} value={textareaVal} onChange={handleChange} size="lg" />
       </Item>
       <Item>
         <Button
